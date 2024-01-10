@@ -57,6 +57,8 @@ $ cd lms
 docker compose up
 ```
 
+- note: if you faced an error run the last command again.
+
 
 ## Database Schema
 ![alt text](schema.png)
