@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  node_backend:
+    container_name: lms
+    image: lms
+    build: 
+      context: .
+    ports:
+      - "3001:3001"
+    environment:
+      - EXTERNAL_PORT=3001
+      - PGDATABASE=lms_db
+      - PGUSER=mostafa
+      - PGPASSWORD=12345
+      - PGHOST=node_db
+    depends_on: 
+      - node_db
+
+
+  node_db:
+    container_name: node_db
+    image: "postgres:12"
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=mostafa
+      - POSTGRES_PASSWORD=12345
+      - POSTGRES_DB=lms_db
+    volumes: 
+      - nps_data:/var/lib/postgresql/data
+
+  
+  
+
+volumes:
+  nps_data: {}
